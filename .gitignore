@@ -1,0 +1,80 @@
+# =====================================================
+# SECRETS — never commit these!
+# =====================================================
+.env
+.env.*
+!.env.example
+**/.streamlit/secrets.toml
+**/secrets.toml
+*.key
+*.pem
+
+# =====================================================
+# Python
+# =====================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs
+venv/
+ENV/
+env/
+.venv/
+.env/
+
+# =====================================================
+# Generated data (regenerate with fetch_data.py)
+# =====================================================
+nevi_dashboard/data/*.csv
+nevi_dashboard/data/*.json
+nevi_dashboard/data/*.parquet
+!nevi_dashboard/data/.gitkeep
+nevi_dashboard/velocity_results.txt
+
+# =====================================================
+# IDE / OS
+# =====================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# =====================================================
+# Notebooks
+# =====================================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# =====================================================
+# Personal / class materials (not for public repo)
+# =====================================================
+Sources/
+Examples/
+*.docx
+~$*.pptx
+~$*.docx
+
+# =====================================================
+# Streamlit
+# =====================================================
+.streamlit/secrets.toml

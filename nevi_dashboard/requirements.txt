@@ -1,0 +1,18 @@
+# =====================================================
+# NEVI Dashboard — production dependencies
+# =====================================================
+streamlit>=1.31.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualization
+plotly>=5.18.0
+folium>=0.15.0
+streamlit-folium>=0.17.0
+
+# Networking & config
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Google Gemini (new unified SDK used by utils.py)
+google-genai>=0.3.0

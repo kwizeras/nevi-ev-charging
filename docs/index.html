@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEVI Bottlenecks | EV Charging Supply Chain Analysis | Sotaire Kwizera</title>
+    <meta name="description" content="An empirical analysis of U.S. EV charging infrastructure deployment bottlenecks, featuring a 9,229-station dataset, interactive Streamlit dashboard, and policy recommendations.">
+    <meta name="author" content="Sotaire Kwizera">
+    <meta property="og:title" content="NEVI, Utilities, and Installers: Bottlenecks in U.S. EV Charging Deployment">
+    <meta property="og:description" content="Interactive dashboard + research paper analyzing 9,229 DCFC stations across 50 states.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+    <div class="nav-container">
+        <a href="#top" class="nav-brand">
+            <span class="brand-mark">⚡</span>
+            <span class="brand-text">Sotaire Kwizera</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#findings">Findings</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#paper">Paper</a></li>
+            <li><a href="#methodology">Methodology</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="top" class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            DEVP 226 · Final Project · UC Berkeley
+        </div>
+        <h1 class="hero-title">
+            NEVI, Utilities, and Installers
+            <span class="hero-subtitle">Bottlenecks in U.S. EV Charging Deployment</span>
+        </h1>
+        <p class="hero-description">
+            An empirical analysis of <strong>9,229 DCFC stations</strong> deployed across all 50 states (2020–2024),
+            quantifying how federal policy, state institutions, and supply chains shape America's transition to
+            electric mobility.
+        </p>
+        <div class="hero-cta">
+            <a href="#dashboard" class="btn btn-primary">
+                <span>Explore Dashboard</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#paper" class="btn btn-secondary">Read the Paper</a>
+        </div>
+        <div class="hero-author">
+            <div class="author-avatar">SK</div>
+            <div class="author-info">
+                <div class="author-name">Sotaire Kwizera</div>
+                <div class="author-role">Data Analyst &middot; Graduate Student at UC Berkeley</div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <span>Scroll to explore</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ===== KEY METRICS ===== -->
+<section class="metrics">
+    <div class="container">
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">+153.5%</div>
+                <div class="metric-label">National Deployment<br>Acceleration (Post-NEVI)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">9,229</div>
+                <div class="metric-label">DCFC Stations Analyzed<br>(2020–2024)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">50+1</div>
+                <div class="metric-label">States Covered<br>(All states + D.C.)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4</div>
+                <div class="metric-label">Targeted Policy<br>Recommendations</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FINDINGS ===== -->
+<section id="findings" class="section section-light">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Key Findings</span>
+            <h2 class="section-title">Three core insights from the data</h2>
+            <p class="section-lead">
+                Analyzing five years of charging infrastructure deployment reveals that <em>institutional capacity</em>—not
+                hardware or capital—determines whether federal funding translates into operational stations.
+            </p>
+        </div>
+
+        <div class="findings-grid">
+            <article class="finding-card">
+                <div class="finding-num">01</div>
+                <h3>Federal policy works, but state capacity is the multiplier.</h3>
+                <p>
+                    The Infrastructure Investment and Jobs Act produced a <strong>153.5% national acceleration</strong>
+                    in DCFC deployment—from 92.1 to 233.4 stations/month. Yet state-level results vary enormously.
+                </p>
+                <ul class="finding-stats">
+                    <li><span>Texas</span><strong>+520.8%</strong></li>
+                    <li><span>California</span><strong>+8.7%</strong></li>
+                    <li><span>Mississippi</span><strong>+860%* </strong></li>
+                </ul>
+                <p class="finding-note">*Off a near-zero baseline (0.21 → 2.00 stations/month).</p>
+            </article>
+
+            <article class="finding-card">
+                <div class="finding-num">02</div>
+                <h3>Institutional bottlenecks dominate deployment time.</h3>
+                <p>
+                    Permitting (Stage C) and utility interconnection (Stage E) account for <strong>65–85% of total
+                    deployment lag</strong>—not hardware manufacturing. Reducing institutional friction yields immediate
+                    gains without waiting for new technology.
+                </p>
+                <div class="finding-bar">
+                    <div class="bar-segment bar-purple" style="width: 50%"><span>Interconnection 40–50%</span></div>
+                    <div class="bar-segment bar-blue" style="width: 30%"><span>Permitting 25–35%</span></div>
+                    <div class="bar-segment bar-teal" style="width: 20%"><span>Hardware 20–25%</span></div>
+                </div>
+            </article>
+
+            <article class="finding-card">
+                <div class="finding-num">03</div>
+                <h3>Network structure mediates a scale-vs-quality tradeoff.</h3>
+                <p>
+                    ChargePoint's capital-light model deploys <strong>52.17 stations/month</strong> with 85–90% uptime,
+                    while Tesla's vertical integration yields fewer stations (<strong>29.65/month</strong>) at
+                    <strong>&gt;99% uptime</strong>—a real-time test of coordination economics.
+                </p>
+                <ul class="finding-stats">
+                    <li><span>ChargePoint share</span><strong>33.9%</strong></li>
+                    <li><span>Tesla share</span><strong>19.3%</strong></li>
+                    <li><span>Networks tracked</span><strong>93</strong></li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DASHBOARD ===== -->
+<section id="dashboard" class="section section-dark">
+    <div class="container">
+        <div class="section-header section-header-light">
+            <span class="eyebrow">Interactive Tool</span>
+            <h2 class="section-title">Explore the data yourself</h2>
+            <p class="section-lead">
+                A live Streamlit dashboard lets you filter 80,000+ U.S. charging stations by state, network, charger
+                type, and year—then ask <strong>EVA</strong>, an embedded AI assistant powered by Google Gemini,
+                natural-language questions about the data.
+            </p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="dashboard-preview">
+                <div class="window-bar">
+                    <span class="window-dot dot-red"></span>
+                    <span class="window-dot dot-yellow"></span>
+                    <span class="window-dot dot-green"></span>
+                    <span class="window-url">⚡ ev-charging-dashboard.streamlit.app</span>
+                </div>
+                <div class="dashboard-body">
+                    <div class="dashboard-sidebar">
+                        <div class="sidebar-label">Filters</div>
+                        <div class="sidebar-item">All States ▾</div>
+                        <div class="sidebar-item">DCFC, Level 2 ▾</div>
+                        <div class="sidebar-item">Available ▾</div>
+                        <div class="sidebar-divider"></div>
+                        <div class="eva-mini">
+                            <div class="eva-avatar-mini">🤖</div>
+                            <div class="eva-text">
+                                <strong>EVA</strong>
+                                <small>Ask me anything</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-main">
+                        <div class="metric-row">
+                            <div class="mini-metric"><span>Total</span><strong>80,597</strong></div>
+                            <div class="mini-metric"><span>DCFC</span><strong>15,056</strong></div>
+                            <div class="mini-metric"><span>States</span><strong>51</strong></div>
+                            <div class="mini-metric"><span>Networks</span><strong>93</strong></div>
+                        </div>
+                        <div class="map-placeholder">
+                            <div class="map-dot" style="top: 35%; left: 18%; background: #ff6b6b"></div>
+                            <div class="map-dot" style="top: 28%; left: 22%; background: #ff6b6b"></div>
+                            <div class="map-dot" style="top: 45%; left: 60%; background: #4ecdc4"></div>
+                            <div class="map-dot" style="top: 55%; left: 35%; background: #ff6b6b"></div>
+                            <div class="map-dot" style="top: 38%; left: 75%; background: #4ecdc4"></div>
+                            <div class="map-dot" style="top: 50%; left: 50%; background: #ff6b6b"></div>
+                            <div class="map-dot" style="top: 65%; left: 80%; background: #4ecdc4"></div>
+                            <div class="map-dot" style="top: 30%; left: 85%; background: #ff6b6b"></div>
+                            <div class="map-overlay">Interactive U.S. Map</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-actions">
+                <a href="https://nevi-ev-charging.streamlit.app" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+                    <span>Launch Live Dashboard</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                </a>
+                <a href="https://github.com/kwizeras/nevi-ev-charging" target="_blank" rel="noopener" class="btn btn-ghost btn-large">View Source</a>
+            </div>
+            <div class="dashboard-features">
+                <div class="feature">
+                    <div class="feature-icon">🗺️</div>
+                    <div>
+                        <h4>Interactive Map</h4>
+                        <p>Filter 80,000+ stations by state, network, charger type, and year</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <div>
+                        <h4>EVA AI Assistant</h4>
+                        <p>Ask plain-English questions; Google Gemini answers with live data</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <div>
+                        <h4>State Comparison</h4>
+                        <p>Per-capita and density metrics, choropleth maps, network breakdowns</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📥</div>
+                    <div>
+                        <h4>Export Data</h4>
+                        <p>Download filtered station data as CSV for your own analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PAPER ===== -->
+<section id="paper" class="section section-light">
+    <div class="container">
+        <div class="paper-grid">
+            <div class="paper-info">
+                <span class="eyebrow">Research Paper</span>
+                <h2 class="section-title">The full empirical study</h2>
+                <p class="paper-description">
+                    A peer-reviewed-style research paper presenting the methodology, supply chain framework,
+                    quantitative analysis, and policy recommendations. Built on the Alternative Fuels Data Center
+                    (AFDC) database via the NREL API.
+                </p>
+                <ul class="paper-toc">
+                    <li><span>I.</span>Introduction</li>
+                    <li><span>II.</span>Background &amp; Literature Review</li>
+                    <li><span>III.</span>Conceptual Framework</li>
+                    <li><span>IV.</span>Methodology</li>
+                    <li><span>V.</span>Findings: Bottleneck Analysis</li>
+                    <li><span>VII.</span>Quantitative Analysis</li>
+                    <li><span>VIII.</span>Policy Implications</li>
+                    <li><span>IX.</span>Conclusion</li>
+                </ul>
+                <div class="paper-actions">
+                    <a href="paper.html" class="btn btn-primary">Read Online</a>
+                    <a href="DEVP_226_Final_Paper.pdf" download class="btn btn-secondary">Download PDF</a>
+                </div>
+            </div>
+            <div class="paper-preview">
+                <div class="paper-mockup">
+                    <div class="paper-sheet sheet-3"></div>
+                    <div class="paper-sheet sheet-2"></div>
+                    <div class="paper-sheet sheet-1">
+                        <div class="paper-title">NEVI, Utilities, and Installers</div>
+                        <div class="paper-byline">Sotaire Kwizera · UC Berkeley · 2026</div>
+                        <div class="paper-abstract">
+                            <strong>Abstract.</strong> This paper analyzes deployment bottlenecks in U.S.
+                            DC fast-charging infrastructure using a 9,229-station sample (2020–2024)…
+                        </div>
+                        <div class="paper-line"></div>
+                        <div class="paper-line short"></div>
+                        <div class="paper-line"></div>
+                        <div class="paper-line"></div>
+                        <div class="paper-line short"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== METHODOLOGY ===== -->
+<section id="methodology" class="section section-dark">
+    <div class="container">
+        <div class="section-header section-header-light">
+            <span class="eyebrow">How it was built</span>
+            <h2 class="section-title">Methodology &amp; Tech Stack</h2>
+        </div>
+
+        <div class="method-grid">
+            <div class="method-card">
+                <div class="method-num">1</div>
+                <h3>Data Acquisition</h3>
+                <p>Pulled 80,597 charging stations from NREL's Alternative Fuels Data Center API and validated 9,229 DCFC stations with operational dates (2020–2024).</p>
+                <div class="tech-pills">
+                    <span class="pill">Python</span>
+                    <span class="pill">NREL API</span>
+                    <span class="pill">requests</span>
+                </div>
+            </div>
+            <div class="method-card">
+                <div class="method-num">2</div>
+                <h3>Velocity Analysis</h3>
+                <p>Applied a temporal-comparison methodology: pre-NEVI (2020–2021) vs. post-NEVI (2023–2024) deployment rates by state and network—24 vs. 24 months.</p>
+                <div class="tech-pills">
+                    <span class="pill">pandas</span>
+                    <span class="pill">numpy</span>
+                </div>
+            </div>
+            <div class="method-card">
+                <div class="method-num">3</div>
+                <h3>Visualization</h3>
+                <p>Built an interactive Streamlit dashboard with Plotly maps, choropleths, and time series. Custom CSS for a polished UI and floating EVA chat.</p>
+                <div class="tech-pills">
+                    <span class="pill">Streamlit</span>
+                    <span class="pill">Plotly</span>
+                    <span class="pill">Folium</span>
+                </div>
+            </div>
+            <div class="method-card">
+                <div class="method-num">4</div>
+                <h3>AI Layer</h3>
+                <p>Integrated Google Gemini (gemini-2.0-flash) to answer natural-language questions, grounded in the live filtered dataset's summary statistics.</p>
+                <div class="tech-pills">
+                    <span class="pill">google-genai</span>
+                    <span class="pill">Gemini 2.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section section-cta">
+    <div class="container">
+        <div class="cta-card">
+            <h2>Let's connect.</h2>
+            <p>Interested in EV infrastructure, energy economics, or data-driven policy research? I'd love to chat.</p>
+            <div class="cta-links">
+                <a href="https://linkedin.com/in/sotairekwizera" target="_blank" rel="noopener" class="cta-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/kwizeras" target="_blank" rel="noopener" class="cta-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="mailto:kwizeras@berkeley.edu" class="cta-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                    <span>Email</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <span class="brand-mark">⚡</span>
+                    <span>Sotaire Kwizera</span>
+                </div>
+                <p class="footer-tag">Data Analyst &middot; Graduate Student at UC Berkeley</p>
+            </div>
+            <div>
+                <h4>Project</h4>
+                <ul>
+                    <li><a href="#findings">Findings</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#paper">Paper</a></li>
+                    <li><a href="#methodology">Methodology</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://afdc.energy.gov/" target="_blank" rel="noopener">AFDC Data</a></li>
+                    <li><a href="https://driveelectric.gov/" target="_blank" rel="noopener">NEVI Program</a></li>
+                    <li><a href="https://github.com/kwizeras/nevi-ev-charging" target="_blank" rel="noopener">Source Code</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Sotaire Kwizera. Built for DEVP 226 at UC Berkeley.</span>
+            <span>Data: AFDC / NREL · AI: Google Gemini · Built with Streamlit &amp; Plotly</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) nav.classList.add('nav-scrolled');
+        else nav.classList.remove('nav-scrolled');
+    });
+</script>
+
+</body>
+</html>
