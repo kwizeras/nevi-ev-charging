@@ -289,6 +289,45 @@ def main():
         """,
         unsafe_allow_html=True,
     )
+
+    # Abstract expander — context for the dashboard
+    with st.expander("📄 **Paper Abstract** — *NEVI, Utilities, and Installers: Bottlenecks in U.S. EV Charging Deployment*", expanded=False):
+        st.markdown(
+            """
+            The deployment of electric vehicle (EV) charging infrastructure remains a binding
+            constraint on the U.S. transition to electric mobility, despite unprecedented federal
+            investment through the 2021 Bipartisan Infrastructure Law and the National Electric
+            Vehicle Infrastructure (NEVI) Formula Program. This paper analyzes deployment
+            bottlenecks in U.S. Direct Current Fast Charging (DCFC) infrastructure using a
+            **9,229-station sample** drawn from the National Renewable Energy Laboratory's
+            Alternative Fuels Data Center (2020–2024). Employing a temporal-comparison
+            methodology that contrasts pre-NEVI (2020–2021) and post-NEVI (2023–2024)
+            Infrastructure Deployment Rates, the analysis documents a **153.5% national
+            acceleration** in monthly station openings—from 92.1 to 233.4 stations per month.
+            However, state-level results vary dramatically: Texas accelerated **520.8%** off a low
+            baseline, California achieved only **8.7%** growth at near-saturation, and Mississippi's
+            **860%** acceleration translated to just 2.00 stations per month. This variation cannot
+            be explained by hardware availability or capital constraints, which are nationally
+            uniform; it correlates directly with state-level institutional capacity in permitting and
+            utility interconnection—stages that account for an estimated **65–85% of total
+            deployment time**.
+
+            The paper identifies three bottlenecks (utility interconnection queues, local
+            permitting fragmentation, and hardware/labor constraints) and proposes four targeted
+            policy interventions: utility make-ready mandates, state-level model permitting
+            legislation, federal workforce expansion, and strengthened domestic-content
+            incentives. The findings argue that the deployment challenge is not technological but
+            **institutional**, and that federal capital is necessary but insufficient without
+            coordinated subnational reform.
+
+            *Keywords: electric vehicles · charging infrastructure · NEVI · supply chain
+            bottlenecks · energy policy · institutional capacity · deployment velocity*
+
+            👉 [Read the full paper](https://kwizeras.github.io/nevi-ev-charging/paper.html)
+            &nbsp;·&nbsp;
+            [Download PDF](https://kwizeras.github.io/nevi-ev-charging/DEVP_226_Final_Paper.pdf)
+            """
+        )
     
     # Load data
     df = load_data()
