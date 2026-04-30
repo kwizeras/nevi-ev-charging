@@ -123,4 +123,3 @@ MIT © 2026 Sotaire Kwizera — see [LICENSE](LICENSE) for details.
 > Energy Laboratory (NREL). This project is independent academic work and is not affiliated
 > with NREL, DOE, or the Joint Office of Energy and Transportation.
 
----
