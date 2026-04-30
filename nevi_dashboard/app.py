@@ -17,6 +17,7 @@ from utils import (
     compute_network_breakdown,
     enrich_with_metadata,
     get_eva_response,
+    _get_secret,
 )
 
 # Page config
@@ -184,13 +185,40 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_data():
-    """Load and cache station data."""
+    """Load station data, auto-fetching from NREL API on first boot."""
     data_path = Path("data/afdc_stations.csv")
+
     if not data_path.exists():
-        st.error("Data file not found. Please run `python fetch_data.py` first.")
-        st.stop()
+        api_key = _get_secret("NREL_API_KEY")
+        if not api_key or api_key == "your_nrel_api_key_here":
+            st.error(
+                "⚠️ **NREL_API_KEY not configured.**  \n"
+                "Set it in *App settings → Secrets* on Streamlit Cloud, "
+                "or in a local `.env` file. Get a free key at "
+                "[developer.nrel.gov/signup](https://developer.nrel.gov/signup/)."
+            )
+            st.stop()
+
+        with st.spinner(
+            "⚡ First-time setup: fetching ~80,000 charging stations "
+            "from the NREL API. This takes ~2 minutes — only happens once."
+        ):
+            try:
+                from fetch_data import fetch_all_stations, clean_and_enrich
+                data_path.parent.mkdir(parents=True, exist_ok=True)
+                df_raw = fetch_all_stations(api_key)
+                if df_raw.empty:
+                    st.error("❌ No data returned from NREL. Check your API key.")
+                    st.stop()
+                df = clean_and_enrich(df_raw)
+                df.to_csv(data_path, index=False)
+                st.success(f"✅ Loaded {len(df):,} stations. Rerun complete!")
+            except Exception as exc:  # noqa: BLE001
+                st.error(f"❌ Failed to fetch data from NREL: {exc}")
+                st.stop()
+
     return load_station_data(str(data_path))
 
 
