@@ -57,31 +57,6 @@ streamlit run app.py            # opens http://localhost:8501
 
 ---
 
-## 📂 Repository Structure
-
-```
-nevi-ev-charging/
-├── docs/                       ← GitHub Pages landing site
-│   ├── index.html              ← Beautiful project showcase
-│   └── assets/styles.css
-├── nevi_dashboard/             ← Streamlit Community Cloud app
-│   ├── app.py                  ← Main dashboard + EVA AI assistant
-│   ├── utils.py                ← Data helpers + Gemini integration
-│   ├── fetch_data.py           ← AFDC API → CSV pipeline
-│   ├── analyze_deployment_velocity.py
-│   ├── requirements.txt
-│   ├── .streamlit/
-│   │   ├── config.toml         ← Theme + server config
-│   │   └── secrets.toml.example
-│   ├── .env.example
-│   └── data/                   ← Generated CSVs (gitignored)
-├── DEVP 226-Paper Final Version.pdf
-├── DEVP 226-Paper Final Version.html
-├── README.md                   ← You are here
-├── DEPLOYMENT.md               ← How to deploy on Streamlit + GitHub Pages
-└── LICENSE
-```
-
 ---
 
 ## 🌐 Deployment
