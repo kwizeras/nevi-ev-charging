@@ -124,7 +124,3 @@ MIT © 2026 Sotaire Kwizera — see [LICENSE](LICENSE) for details.
 > with NREL, DOE, or the Joint Office of Energy and Transportation.
 
 ---
-
-<div align="center">
-  <sub>Built with ⚡ for DEVP 226: Economics of Innovation and Supply Chains · UC Berkeley · Spring 2026</sub>
-</div>
